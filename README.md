@@ -20,5 +20,4 @@ A swiss knife for Game Boy Camera data managing (both savegame SRAM and ROM).
     - allow use of Wild Frame 8
 - and more!
   
-
 A lot of thanks to [Raphaël BOICHOT](https://github.com/Raphael-Boichot/Inject-pictures-in-your-Game-Boy-Camera-saves), who did an amazing work to reverse engineer the savegame file.
