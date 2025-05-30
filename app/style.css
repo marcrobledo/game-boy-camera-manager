@@ -364,3 +364,61 @@ button.btn:disabled{color:#999}
 button[type=submit].btn{box-shadow:0 1px 0 #f26da3 inset;background-color:#d45484;border-color:#a03552 #a0355c #92354c;color:#fff}
 button[type=submit].btn:hover{box-shadow:0 1px 0 #f766ae inset;background-color:#dd4b85;border-color:#ab2745;color:#fff}
 button[type=submit].btn:active{box-shadow:0 2px 8px -3px rgba(0,0,0,.5) inset;border-color:#812b42 #812b4a #752b3d;color:#ecdddd;background-color:#812b4a;}
+
+
+@media only screen and (max-width:720px){
+	header img{
+		max-height:64px;
+	}
+
+	main{
+		padding:8px;
+	}
+	#box{
+		width:auto;
+		margin: 0 6px;
+	}
+	#albums{
+		padding:16px 0;
+	}
+	#album-game-faces{
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.album {
+		grid-template-columns: repeat(2, 1fr);
+		gap:6px;
+	}
+	.album>button{
+		padding:0;
+	}
+	#btn-settings span{display:none;}
+
+	aside{
+		display:none;
+		position:fixed;
+		top:10%;
+		left:calc(50% - 160px);
+		box-sizing:border-box;
+		width:320px;
+		border-radius:4px;
+		z-index:8001;
+		box-shadow:rgba(0,0,0,.25) 0 0 8px 2px;
+	}
+	aside.mobile-show{
+		display:block;
+	}
+	#mobile-backdrop{
+		position:fixed;
+		display:none;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		background-color:rgba(0,0,0,.5);
+		backdrop-filter:blur(2px);
+		z-index:8000;
+	}
+	#mobile-backdrop.mobile-show{
+		display:block;
+	}
+}

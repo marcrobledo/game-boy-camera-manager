@@ -241,6 +241,8 @@ const _evtClickPicture=function(evt){
 
 	currentPicture=albumPictures[pictureIndex];
 	_refreshCurrentPicture();
+	document.querySelector('aside').className='mobile-show';
+	document.getElementById('mobile-backdrop').className='mobile-show';
 }
 const _refreshCurrentPicture=function(updateAlbumButton){
 	if(!currentPicture)
@@ -1386,6 +1388,10 @@ window.addEventListener('load', function(evt){
 	});
 
 	/* UI events */
+	document.getElementById('mobile-backdrop').addEventListener('click', function(evt){
+		document.querySelector('aside').className='';
+		this.className='';
+	});
 	document.getElementById('input-edit-user-id').addEventListener('change', function(evt){
 		this.value=this.value.replace(/[^0-9]/g, '').substr(0, 8);
 	});
