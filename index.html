@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game Boy Camera Manager</title>
+	<meta name="description" content="Extracts and inserts pictures and other cool tools for your Game Boy Camera!"/>
+	<meta name="keywords" content="game, boy, camera, manager, photo, picture, injector, extractor, converter"/>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+	<link rel="shortcut icon" href="assets/favicon16_red.png" type="image/png" sizes="16x16"/>
+
+	<!-- social network metatags -->	
+	<meta name="twitter:site" content="@marc_robledo">
+	<meta name="twitter:creator" content="@marc_robledo">
+	<meta name="twitter:domain" content="marcrobledo.com">
+	<meta property="og:title" content="Game Boy Camera Manager">
+	<meta name="twitter:title" content="Game Boy Camera Manager">
+	<meta name="twitter:description" content="Extracts and inserts pictures and other cool tools for your Game Boy Camera!">
+	<meta property="og:image" content="https://www.marcrobledo.com/game-boy-camera-manager/assets/thumbnail.jpg">
+	<meta name="twitter:image" content="https://www.marcrobledo.com/game-boy-camera-manager/assets/thumbnail.jpg">
+	<meta name="twitter:card" content="photo">
+
+	<script type="text/javascript" src="./app/script.js"></script>
+	<link rel="stylesheet" href="./app/style.css" />
+</head>
+
+<body class="initial">
+	<div id="wrapper">
+		<header>
+			<img id="logo-icon" src="./assets/logo_icon.png" alt="Game Boy Camera icon" />
+			<img id="logo" src="./assets/logo_en.png" alt="Game Boy Camera Manager logo" />
+			<h1>Game Boy Camera Manager</h1>
+		</header>
+		<div id="box">
+			<main>
+				<div>
+					<div id="toolbar">
+						<div>
+							<input type="file" id="input-file" accept=".sav,.srm,.gb" />
+							<button type="button" id="btn-file-load" class="btn">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .14.11.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M11.78 4.72a.75.75 0 1 1-1.06 1.06L8.75 3.81V9.5a.75.75 0 0 1-1.5 0V3.81L5.28 5.78a.75.75 0 1 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25Z"/></svg> <span data-translate="*">Load file</span>
+							</button>
+
+							<button type="button" id="btn-file-save" class="btn" disabled>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" disabled><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .14.11.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.69V2a.75.75 0 0 1 1.5 0v5.69l1.97-1.97a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 6.78a.75.75 0 1 1 1.06-1.06l1.97 1.97Z"/></svg> <span data-translate="*">Save file</span>
+							</button>
+
+							<span id="file-type" data-translate="*">No file loaded</span><span id="file-name"></span>
+						</div>
+						<div>
+							<button id="btn-settings" class="btn">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8.2 8.2 0 0 1 .7.03c.74.07 1.3.61 1.46 1.27l.29 1.1c.02.07.08.17.21.23.23.12.45.24.67.39.12.08.23.09.3.07l1.1-.3c.64-.18 1.4.02 1.82.63.27.38.5.79.7 1.21.32.68.11 1.43-.36 1.9l-.81.8c-.05.05-.1.15-.1.3.02.25.02.5 0 .77 0 .14.05.24.1.29l.81.8c.47.48.68 1.22.36 1.9a7.98 7.98 0 0 1-.7 1.21c-.43.61-1.18.81-1.82.63l-1.1-.3c-.07-.02-.18 0-.3.07a5.9 5.9 0 0 1-.67.39c-.13.07-.2.16-.21.22l-.3 1.1c-.16.66-.7 1.2-1.45 1.27a8 8 0 0 1-1.4 0 1.67 1.67 0 0 1-1.46-1.26l-.29-1.1c-.02-.07-.08-.16-.21-.23a5.74 5.74 0 0 1-.67-.39c-.12-.08-.23-.09-.3-.07l-1.1.3c-.64.18-1.4-.02-1.82-.62a8.12 8.12 0 0 1-.7-1.22 1.67 1.67 0 0 1 .36-1.9l.81-.8c.05-.05.1-.15.1-.3a6.21 6.21 0 0 1 0-.77.41.41 0 0 0-.1-.29l-.81-.8a1.67 1.67 0 0 1-.36-1.9 7.92 7.92 0 0 1 .7-1.21 1.67 1.67 0 0 1 1.82-.63l1.1.3c.07.02.18 0 .3-.07.22-.15.44-.27.67-.39.13-.07.2-.16.21-.22l.3-1.1C6 .63 6.54.1 7.3.02L8 0Zm-.57 1.52c-.04 0-.1.04-.14.15L7 2.77c-.14.57-.55.97-1 1.2a4.9 4.9 0 0 0-.5.28c-.41.28-.97.43-1.52.27l-1.1-.3c-.12-.03-.18.02-.2.05-.22.3-.41.64-.57.99-.02.03-.03.1.05.19l.82.8c.41.4.56.96.53 1.46a4.7 4.7 0 0 0 0 .58 1.9 1.9 0 0 1-.53 1.46l-.82.8c-.08.08-.07.16-.05.2.16.34.35.67.57.98.02.03.08.08.2.05l1.1-.3c.55-.16 1.1-.01 1.52.26l.5.3c.45.22.86.62 1 1.18l.3 1.1c.02.12.1.15.13.15a6.6 6.6 0 0 0 1.14 0c.04 0 .1-.03.14-.14l.29-1.1c.14-.57.55-.97 1-1.2.17-.08.33-.18.5-.29.41-.27.96-.42 1.52-.27l1.1.3c.12.04.18 0 .2-.04.22-.31.41-.64.57-.99.02-.03.03-.1-.05-.19l-.82-.8c-.41-.4-.56-.96-.53-1.46a4.7 4.7 0 0 0 0-.58 1.9 1.9 0 0 1 .53-1.46l.82-.8a.2.2 0 0 0 .06-.2 6.46 6.46 0 0 0-.58-.98c-.02-.03-.08-.08-.2-.05l-1.1.3c-.56.16-1.1.01-1.53-.27a4.44 4.44 0 0 0-.5-.29 1.88 1.88 0 0 1-1-1.18l-.28-1.1c-.03-.12-.1-.15-.14-.16a6.6 6.6 0 0 0-1.14 0ZM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM9.5 8a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z"/></svg> <span data-translate="*">Settings</span>
+							</button>
+						</div>
+					</div>
+
+					<div id="albums">
+						<div id="intro">
+							<p data-translate="*">Welcome!</p>
+							<p data-translate="*">Load a valid Game Boy Camera SRAM savegame or ROM to start</p>
+						</div>
+					</div>
+				</div>
+			</main>
+			<aside>
+				<div id="picture-info">
+					<div>
+						<canvas id="canvas-thumbnail" width="32" height="28"></canvas>
+					</div>
+					<div>
+						<div id="picture-author"></div>
+						<div id="picture-date"></div>
+						<div id="picture-comment"></div>
+					</div>
+				</div>
+				<div class="text-center">
+					<canvas id="canvas-picture" width="256" height="224"></canvas>
+				</div>
+				<div class="text-center">
+					<button id="btn-export" class="btn" disabled data-translate="*">Export</button>
+					<button id="btn-import" class="btn" disabled data-translate="*">Import</button>
+					<button id="btn-edit" class="btn" disabled data-translate="*">Edit</button>
+					<button id="btn-delete-restore" class="btn" disabled data-translate="*">Delete</button>
+				</div>
+
+				<div id="popover-export" class="popover">
+					<div><button id="btn-export-binary" data-translate="*">Export as binary</button></div>
+					<div><button id="btn-export-image" data-translate="*">Export as image</button></div>
+					<div><button id="btn-export-image-original" data-translate="*">Export as image (original)</button></div>
+				</div>
+			</aside>
+		</div>
+		<footer>
+			Game Boy Camera Manager v1.0<br/>
+			made with <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" id="icon-heart"><path d="M7.7 15v-.1a22 22 0 0 1-3.8-2.6C2 10.7 0 8.3 0 5.5 0 2.8 2 1 4.3 1c1.5 0 2.9.8 3.7 2 .8-1.2 2.2-2 3.8-2 2 0 4.2 1.8 4.2 4.5 0 2.9-2 5.2-3.9 6.8a22 22 0 0 1-3.4 2.4 7.2 7.2 0 0 1-.3.2.8.8 0 0 1-.7 0Z"/></svg> by <a href="https://www.marcrobledo.com" target="_blank">Marc Robledo</a>
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" id="icon-github"><path d="M8 0a8 8 0 0 1 8 8 8.01 8.01 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38l.01-2.2c0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95a3.1 3.1 0 0 0-.82-2.15c.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82a7.42 7.42 0 0 0-4 0c-1.53-1.03-2.2-.82-2.2-.82a2.87 2.87 0 0 0-.08 2.12 3.11 3.11 0 0 0-.82 2.15c0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94l.01 1.49c0 .21-.15.45-.55.38A8 8 0 0 1 0 8a8 8 0 0 1 8-8Z"/></svg>
+			<a href="https://github.com/marcrobledo/game-boy-camera-manager/"  target="_blank">See sourcecode in GitHub</a>
+		</footer>
+	</div>
+
+
+	<dialog id="dialog-settings">
+		<form id="form-settings" method="dialog">
+			<div class="dialog-row">
+				<label for="select-settings-region-japan" data-translate="*">Region</label>
+				<select id="select-settings-region-japan">
+					<option value="0" data-translate="*">USA/Europe</option>
+					<option value="1" data-translate="*">Japan</option>
+				</select>
+			</div>
+			<div class="dialog-row">
+				<label for="select-settings-theme" data-translate="*">Theme</label>
+				<select id="select-settings-theme">
+					<option value="red" data-translate="*">Red</option>
+					<option value="blue" data-translate="*">Blue</option>
+					<option value="yellow" data-translate="*">Yellow</option>
+					<option value="green" data-translate="*">Green</option>
+					<option value="purple" data-translate="*">Purple</option>
+					<option value="gold" data-translate="*">Golden</option>
+				</select>
+			</div>
+			<div class="dialog-row">
+				<label for="select-settings-palette" data-translate="*">Palette</label>
+				<select id="select-settings-palette">
+					<option value="0" data-translate="*">Grayscale</option>
+					<option value="1" data-translate="*">Emulators</option>
+					<option value="2" data-translate="*">DMG</option>
+					<option value="3" data-translate="*">SGB</option>
+					<option value="4" data-translate="*">GBC</option>
+				</select>
+			</div>
+			<div class="dialog-buttons">
+				<button type="submit" class="btn">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 .02-1.04.75.75 0 0 1 1.04-.02L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+					<span data-translate="*">Close</span>
+				</button>
+			</div>
+		</form>
+	</dialog>
+
+	<dialog id="dialog-edit">
+		<form id="form-edit" method="dialog">
+			<div class="dialog-row">
+				<label for="input-edit-user-id" data-translate="*">Photographer ID</label>
+				<input id="input-edit-user-id" class="mono" type="text" placeholder="User ID" size="8" maxlength="8" data-translate="*"/>
+			</div>
+			<div class="dialog-row">
+				<label for="input-edit-user-name" data-translate="*">Photographer name</label>
+				<input id="input-edit-user-name" type="text" placeholder="User name" size="9" maxlength="9" data-translate="*" />
+			</div>
+			<div class="dialog-row">
+				<label for="select-edit-user-gender" data-translate="*">Photographer gender/blood type</label>
+				<div>
+					<select id="select-edit-user-gender">
+						<option value="0">-</option>
+						<option value="1">&male;</option>
+						<option value="2">&female;</option>
+					</select>
+					<select id="select-edit-user-blood">
+						<option value="0">-</option>
+						<option value="1">A</option>
+						<option value="2">B</option>
+						<option value="3">O</option>
+						<option value="4">AB</option>
+					</select>
+				</div>
+			</div>
+
+			<hr/>
+
+			<div class="dialog-row">
+				<label for="input-edit-birthday-year" data-translate="*">Date</label>
+				<div>
+					<input id="input-edit-birthday-year" class="mono" type="text" placeholder="Year" size="4" maxlength="4" data-translate="*" /> / 
+					<input id="input-edit-birthday-month" class="mono" type="text" placeholder="Month" size="2" maxlength="2" data-translate="*" /> / 
+					<input id="input-edit-birthday-day" class="mono" type="text" placeholder="Day" size="2" maxlength="2" data-translate="*" />
+				</div>
+			</div>
+			<div class="dialog-row">
+				<label for="textarea-edit-comment" data-translate="*">Comment</label>
+				<textarea id="textarea-edit-comment" placeholder="Comment" rows="3" cols="9" data-translate="*"></textarea>
+			</div>
+			<div class="dialog-row">
+				<label for="select-edit-border" data-translate="*">Border</label>
+				<select id="select-edit-border">
+					<option value="0">1</option>
+					<option value="1">2</option>
+					<option value="2">3</option>
+					<option value="3">4</option>
+					<option value="4">5</option>
+					<option value="5">6</option>
+					<option value="6">7</option>
+					<option value="7">8</option>
+					<option value="8">9</option>
+					<option value="9">10</option>
+					<option value="10">11</option>
+					<option value="11">12</option>
+					<option value="12">13</option>
+					<option value="13">14</option>
+					<option value="14">15</option>
+					<option value="15">16</option>
+					<option value="16">17</option>
+					<option value="17">18</option>
+					<option value="18">*19</option>
+				</select>
+			</div>
+
+			<div class="dialog-buttons">
+				<button type="button" id="btn-cancel-edit" class="btn">Cancel</button>
+				<button type="submit" class="btn">Save</button>
+			</div>
+		</form>
+	</dialog>
+</body>
+</html>
