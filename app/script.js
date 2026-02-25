@@ -1,6 +1,6 @@
 /*
 * Game Boy Camera Manager
-* (last update: 2025-05-30)
+* (last update: 2026-02-25)
 * By Marc Robledo https://www.marcrobledo.com
 *
 * License:
@@ -188,7 +188,16 @@ const _evtClickImportPicture=function(evt){
 				};
 			}else if(currentPicture instanceof PocketCameraCartridgeGameFace || currentPicture instanceof PocketCameraPicture){
 				img.onload = function() {
-					importImage(this);
+					if(this.width===160 && this.height===144 && confirm('Crop imported image to 128x112?')){
+						//if providing a DMG crop to 128x112
+						const croppedCanvas=document.createElement('canvas');
+						croppedCanvas.width=128;
+						croppedCanvas.height=112;
+						croppedCanvas.getContext('2d').drawImage(this, 16, 16, 128, 112, 0, 0, 128, 112);
+						importImage(croppedCanvas);
+					}else{
+						importImage(this);
+					}
 				};
 			}
 			img.src = window.URL.createObjectURL(this.files[0]);

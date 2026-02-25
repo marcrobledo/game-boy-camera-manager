@@ -301,7 +301,7 @@ footer svg#icon-github{
 	background-color:transparent;
 	border-radius:3px;
 }
-.popover button:hover{
+.popover button:hover:not(:disabled){
 	background-color:#e0e0e0;
 	cursor:pointer;
 }
